@@ -1,0 +1,20 @@
+{
+  "name": "site-config-loader-example",
+  "version": "1.0.0",
+  "description": "A simple example",
+  "license": "ISC",
+  "author": "Theodor Heiselberg",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.3.0",
+    "vite-plugin-elm-watch": "^1.4.4"
+  },
+  "dependencies": {
+    "site-config-loader": "^1.0.3"
+  }
+}

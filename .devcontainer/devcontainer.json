@@ -1,0 +1,48 @@
+{
+  "name": "elm-first-vite-example",
+
+  // --- Use Docker Compose configuration ---
+  // Point to your docker-compose file (relative to .devcontainer folder)
+  "dockerComposeFile": "docker-compose.yml",
+
+  // The name of the service defined in docker-compose.yml that VS Code should attach to
+  "service": "dev",
+
+  // The path inside the container where your project files are mounted by docker-compose.yml
+  "workspaceFolder": "/workspaces",
+  // --- End of Docker Compose configuration ---
+  "mounts": [
+    "source=test-elm-devcontainer,target=/home/container-user/.elm,type=volume"
+  ],
+
+  // Keep customizations for VS Code settings and extensions
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // Set bash as the default terminal (installed in Dockerfile)
+        "terminal.integrated.defaultProfile.linux": "zsh"
+        // Optional Neovim integration path:
+        // "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim"
+      },
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "Elmtooling.elm-ls-vscode",
+        "humao.rest-client",
+        "ms-azuretools.vscode-containers"
+      ]
+    }
+  },
+
+  // The user VS Code should run as inside the service container.
+  // Should match the user the service runs as (root in this case).
+  "remoteUser": "container-user",
+  "portsAttributes": {
+    "3003": {
+      "label": "Elm"
+    }
+  }
+
+  // Optional: Command to run after the Compose service container is created.
+  // Useful for things like installing nvim plugins if config is copied/mounted.
+  // "postCreateCommand": "nvim --headless '+Lazy! sync' +qa"
+}

@@ -1,0 +1,41 @@
+name: html-css-course-elm
+
+services:
+  # Define our main development service, let's call it 'dev'
+  dev:
+    # Instructions on how to build the image for this service
+    build:
+      # Use the current directory (.devcontainer) as the build context
+      context: .
+      # Specify the Dockerfile within the build context
+      dockerfile: Dockerfile.devmachine
+
+    # Define volumes to mount
+    volumes:
+      # Mount the entire project directory (one level up from .devcontainer)
+      # into the /workspace directory inside the container.
+      # 'cached' optimizes mount performance on macOS/Windows.
+      - ..:/workspaces:cached
+      - elm-first-vite-example:/home/container-user/.elm
+      # --- Alternative for Neovim config ---
+      # Instead of COPY in Dockerfile, you could mount it here:
+      # Ensure the source path '../.nvim' exists in your project root.
+      # - ../.nvim:/root/.config/nvim:cached
+      # --- ADD THIS LINE ---
+      # Mount the project's nvim config into the root user's config dir
+      # Source: ./.config/nvim (relative to this docker-compose.yml file)
+      # Target: /root/.config/nvim (where nvim looks when run as root)
+      # - ./.config/nvim:/root/.config/nvim:cached
+    # Command to run when the container starts.
+    # 'sleep infinity' keeps the container running indefinitely so VS Code can attach.
+    command: sleep infinity
+
+    # Environment variables can be defined here if needed
+    # environment:
+    #   - DATABASE_URL=...
+
+    # The service will run as 'root' because that's the last USER in the Dockerfile.
+    # You could explicitly set 'user: root' here if desired.
+
+volumes:
+  elm-first-vite-example:

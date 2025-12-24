@@ -1,0 +1,23 @@
+# elm-lang
+**/elm-stuff/
+## Elm is generating this as an output
+**/index.js
+**/node_modules/
+## elm reactor
+/elm-sandbox/build/
+
+## elm-vite generated output
+**/wwwroot/
+
+
+# nuke c#
+**/bin
+**/obj
+**/.nuke
+
+# MAC
+**/.DS_Store
+html-css-course
+
+html-css-course-elm/wwwroot/elm.js
+elm-vite-playground/example/wwwroot/
