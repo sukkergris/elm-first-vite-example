@@ -1,3 +1,4 @@
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from "vite";
 import elm from 'vite-plugin-elm-watch';
 import devMetaTagPlugin from './vite-plugin-dev-meta.mjs';
@@ -12,7 +13,8 @@ export default defineConfig(({ command }) => ({
 
   plugins: [
     elm(),
-    devMetaTagPlugin(command)
+    devMetaTagPlugin(command),
+    tailwindcss()
   ],
 
   server: {

@@ -97,3 +97,30 @@ export default function devMetaTagPlugin(command) {
 ```
 3. Run `npx vite` or `npm run dev` and explore the Console
 
+## Adding tailwind
+
+1. > npm install -D @tailwindcss/cli @tailwindcss/vite tailwindcss
+2. > touch src/site.css
+3. Add content to site.css
+```css
+@import "tailwindcss";
+
+body {
+  @apply bg-pink-50 text-red-900 font-sans;
+}
+```
+4. Add usage of tailwind to `vite.config.mjs`
+```js
+import tailwindcss from '@tailwindcss/vite';
+...
+  plugins: [
+    elm(),
+    devMetaTagPlugin(command),
+    tailwindcss()
+  ],
+```
+5. Add the css to `main.js`
+```js
+import './site.css';
+```
+6. Restart the vite server
