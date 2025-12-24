@@ -1,10 +1,21 @@
 [req]
 distinguished_name = req_distinguished_name
-req_extensions = v3_req
+x509_extensions = v3_req
 prompt = no
 
 [req_distinguished_name]
+C = DK
+ST = Central Denmark Region
+L = Tilst
+O = Kompromisløs
+OU = IT
 CN = happy.dev
 
 [v3_req]
-subjectAltName = DNS:happy.dev,DNS:*.happy.dev
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = happy.dev
+DNS.2 = squidex.happy.dev

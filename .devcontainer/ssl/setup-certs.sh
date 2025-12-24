@@ -23,6 +23,16 @@ chmod 600 "$CERT_DIR/$CERT_NAME.key"
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo "Adding certificate to macOS Keychain..."
   sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain "$CERT_DIR/$CERT_NAME.crt"
+  
+  # Add domains to /etc/hosts
+  echo "Adding domains to /etc/hosts..."
+  HOSTS_ENTRY="127.0.0.1 $CERT_NAME squidex.$CERT_NAME"
+  if ! grep -q "$CERT_NAME" /etc/hosts; then
+    echo "$HOSTS_ENTRY" | sudo tee -a /etc/hosts > /dev/null
+    echo "Added: $HOSTS_ENTRY"
+  else
+    echo "$CERT_NAME already in /etc/hosts"
+  fi
 fi
 
 echo "✅ Certificate created!"
