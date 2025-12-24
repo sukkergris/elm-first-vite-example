@@ -37,8 +37,11 @@
   // Should match the user the service runs as (root in this case).
   "remoteUser": "container-user",
   "portsAttributes": {
-    "3003": {
+    "3456": {
       "label": "Elm"
+    },
+    "4567": {
+      "label": "preview"
     }
   }
 

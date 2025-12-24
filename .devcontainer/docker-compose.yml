@@ -36,6 +36,14 @@ services:
 
     # The service will run as 'root' because that's the last USER in the Dockerfile.
     # You could explicitly set 'user: root' here if desired.
-
+  nginx:
+    image: nginx:alpine
+    container_name: elm-first-nginx
+    ports:
+      - "8765:80"
+    # volumes:
+      # - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - dev
 volumes:
   elm-first-vite-example:
