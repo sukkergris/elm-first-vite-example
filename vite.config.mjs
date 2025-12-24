@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import elm from 'vite-plugin-elm-watch';
 import devMetaTagPlugin from './vite-plugin-dev-meta.mjs';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command, mode }) => ({
   publicDir: "public",
 
   build: {
@@ -13,7 +13,7 @@ export default defineConfig(({ command }) => ({
 
   plugins: [
     elm(),
-    devMetaTagPlugin(command),
+    devMetaTagPlugin(command, mode),
     tailwindcss()
   ],
 

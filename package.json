@@ -6,7 +6,7 @@
   "author": "Theodor Heiselberg",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode locally",
     "build": "vite build",
     "serve": "vite preview"
   },

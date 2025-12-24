@@ -1,4 +1,4 @@
-export default function devMetaTagPlugin(command) {
+export default function devMetaTagPlugin(command, mode) {
   if (command !== 'serve') return null;
 
   return {
@@ -6,7 +6,7 @@ export default function devMetaTagPlugin(command) {
     transformIndexHtml(html) {
       return html.replace(
         '</head>',
-        '<meta name="environment-name" content="production"></head>'
+        `<meta name="environment-name" content="${mode}"></head>`
       );
     }
   };

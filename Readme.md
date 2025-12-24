@@ -29,7 +29,7 @@ let app = Main.init({
 import { defineConfig } from "vite";
 import elm from 'vite-plugin-elm-watch';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command, mode }) => ({
   publicDir: "public",
 
   build: {
@@ -54,7 +54,9 @@ export default defineConfig(({ command }) => ({
 
 ### Add configurations
 
-1. >mkdir -p public/config && touch public/config/environmentVariables.json && touch public/config/environmentVariables.local.json
+Don's use `local` since it's recerved for vite
+
+1. >mkdir -p public/config && touch public/config/environmentVariables.json && touch public/config/environmentVariables.locally.json
 
 2. Add some variables to the two files. Eg.
 ```js
@@ -72,7 +74,7 @@ Since we havn't added any meta data to set the environment `site-config-loader` 
 1. >touch vite-plugin-dev-meta.mjs
 2. Add content
 ```js
-export default function devMetaTagPlugin(command) {
+export default function devMetaTagPlugin(command, mode) {
   if (command !== 'serve') return null;
 
   return {
@@ -80,7 +82,7 @@ export default function devMetaTagPlugin(command) {
     transformIndexHtml(html) {
       return html.replace(
         '</head>',
-        '<meta name="environment-name" content="production"></head>'
+        `<meta name="environment-name" content="${mode}"></head>`
       );
     }
   };
@@ -92,10 +94,10 @@ export default function devMetaTagPlugin(command) {
   ...
   plugins: [
     elm(),
-    devMetaTagPlugin(command)
+    devMetaTagPlugin(command,mode)
   ],
 ```
-3. Run `npx vite` or `npm run dev` and explore the Console
+3. Run `npx vite --mode locally` or `npm run dev` and explore the Console
 
 ## Adding tailwind
 
@@ -115,7 +117,7 @@ import tailwindcss from '@tailwindcss/vite';
 ...
   plugins: [
     elm(),
-    devMetaTagPlugin(command),
+    devMetaTagPlugin(command,mode),
     tailwindcss()
   ],
 ```
@@ -124,3 +126,5 @@ import tailwindcss from '@tailwindcss/vite';
 import './site.css';
 ```
 6. Restart the vite server
+7. > npx vite --mode local
+8. Test with `mode production`
