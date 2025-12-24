@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Example
-# bash setup-certs.sh happy.dev 365 .devcontainer/ssl
+# bash> setup-certs.sh happy.dev 365
 
 # Default values
 CERT_NAME="${1:-localhost}"
