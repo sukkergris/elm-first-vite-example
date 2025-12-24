@@ -23,4 +23,9 @@ export default defineConfig(({ command }) => ({
     host: "0.0.0.0", // Listen on all network interfaces to allow access from the host machine
     allowedHosts: ["host.docker.internal", "localhost"],
   },
+  preview: {
+    host: '0.0.0.0',
+    port: 4567,
+    strictPort: true,
+  },
 }));
