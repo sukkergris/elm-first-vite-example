@@ -28,7 +28,8 @@
         "ms-vscode-remote.remote-containers",
         "Elmtooling.elm-ls-vscode",
         "humao.rest-client",
-        "ms-azuretools.vscode-containers"
+        "ms-azuretools.vscode-containers",
+        "ahmadalli.vscode-nginx-conf"
       ]
     }
   },

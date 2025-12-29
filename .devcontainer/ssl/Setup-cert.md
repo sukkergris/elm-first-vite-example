@@ -15,7 +15,7 @@ security find-certificate -c happy.dev /Library/Keychains/System.keychain
 openssl x509 -in happy.dev.crt -text -noout | grep -A 1 "Subject Alternative Name"
 ```
 
-## Test from the host
+## Test the certs from the host
 
 ```bash
 # Test both domains (will show cert details)
