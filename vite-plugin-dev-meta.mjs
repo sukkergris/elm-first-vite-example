@@ -1,13 +1,13 @@
-export default function devMetaTagPlugin(command, mode) {
-  if (command !== 'serve') return null;
+export default function devMetaTagPlugin(command) {
+  if (command !== "serve") return null;
 
   return {
-    name: 'html-transform-dev-only',
+    name: "html-transform-dev-only",
     transformIndexHtml(html) {
       return html.replace(
-        '</head>',
-        `<meta name="environment-name" content="${mode}"></head>`
+        "</head>",
+        `<meta name="environment-name" content="local"></head>`
       );
-    }
+    },
   };
 }
