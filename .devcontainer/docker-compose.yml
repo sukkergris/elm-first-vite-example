@@ -13,7 +13,7 @@ services:
       # Mount the entire project directory (one level up from .devcontainer)
       # into the /workspace directory inside the container.
       # 'cached' optimizes mount performance on macOS/Windows.
-      - ..:/workspaces:cached
+      - ..:/xyz:cached
       - elm-first-vite-example:/home/container-user/.elm
     # Command to run when the container starts.
     # 'sleep infinity' keeps the container running indefinitely so VS Code can attach.

@@ -8,6 +8,6 @@ main : Program () () Never
 main =
     Browser.sandbox
         { init = ()
-        , view = \_ -> text "Using vite server plugin to alter HTML! And now with HTTPS enabled!"
+        , view = \_ -> text "Using vite server plugin to alter HTML! And now with HTTPS enabled! Working"
         , update = \_ model -> model
         }

@@ -9,7 +9,7 @@
   "service": "dev",
 
   // The path inside the container where your project files are mounted by docker-compose.yml
-  "workspaceFolder": "/workspaces",
+  "workspaceFolder": "/xyz",
   // --- End of Docker Compose configuration ---
   "mounts": [
     "source=test-elm-devcontainer,target=/home/container-user/.elm,type=volume"
