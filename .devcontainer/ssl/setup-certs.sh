@@ -17,7 +17,7 @@ openssl req -x509 -new -key "$CERT_DIR/$CERT_NAME.key" -sha256 -days $DAYS \
 
 # Set proper permissions
 chmod 644 "$CERT_DIR/$CERT_NAME.crt"
-chmod 600 "$CERT_DIR/$CERT_NAME.key"
+chmod 644 "$CERT_DIR/$CERT_NAME.key"
 
 # Add certificate to macOS Keychain (macOS only)
 if [[ "$OSTYPE" == "darwin"* ]]; then
